@@ -25,9 +25,7 @@ class UsersController extends Controller
         try {
             $this->authorize('update', $user);
         } catch (AuthorizationException $authorizationException) {
-            $result = '对不起，你无权访问此页面！';
-
-            return view("errors.403", compact('result'));
+            return abort(403, '对不起，你无权访问此页面！');
         }
 
         return view('users.edit', compact('user'));
