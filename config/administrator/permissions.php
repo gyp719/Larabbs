@@ -4,11 +4,11 @@ use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Auth;
 
 return [
-    'title'   => '权限',
-    'single'  => '权限',
-    'model'   => Permission::class,
+    'title'  => '权限',
+    'single' => '权限',
+    'model'  => Permission::class,
 
-    'permission' => function () {
+    'permission'         => function () {
         return Auth::user()->can('manage_users');
     },
 
@@ -27,17 +27,17 @@ return [
             return false;
         },
         // 允许查看
-        'view' => function ($model) {
+        'view'   => function ($model) {
             return true;
         },
     ],
 
     'columns' => [
-        'id' => [
+        'id'        => [
             'title' => 'ID',
         ],
-        'name' => [
-            'title'    => '标示',
+        'name'      => [
+            'title' => '标示',
         ],
         'operation' => [
             'title'    => '管理',
@@ -46,15 +46,15 @@ return [
     ],
 
     'edit_fields' => [
-        'name' => [
+        'name'  => [
             'title' => '标示（请慎重修改）',
 
             // 表单条目标题旁的『提示信息』
-            'hint' => '修改权限标识会影响代码的调用，请不要轻易更改。'
+            'hint'  => '修改权限标识会影响代码的调用，请不要轻易更改。'
         ],
         'roles' => [
-            'type' => 'relationship',
-            'title' => '角色',
+            'type'       => 'relationship',
+            'title'      => '角色',
             'name_field' => 'name',
         ],
     ],

@@ -3,32 +3,32 @@
 use App\Models\Topic;
 
 return [
-    'title'   => '话题',
-    'single'  => '话题',
-    'model'   => Topic::class,
+    'title'  => '话题',
+    'single' => '话题',
+    'model'  => Topic::class,
 
-    'columns' => [
+    'columns'     => [
 
-        'id' => [
+        'id'          => [
             'title' => 'ID',
         ],
-        'title' => [
+        'title'       => [
             'title'    => '话题',
             'sortable' => false,
             'output'   => function ($value, $model) {
                 return '<div style="max-width:260px">' . model_link($value, $model) . '</div>';
             },
         ],
-        'user' => [
+        'user'        => [
             'title'    => '作者',
             'sortable' => false,
             'output'   => function ($value, $model) {
                 $avatar = $model->user->avatar;
-                $value = empty($avatar) ? 'N/A' : '<img src="'.$avatar.'" style="height:22px;width:22px"> ' . $model->user->name;
+                $value  = empty($avatar) ? 'N/A' : '<img src="' . $avatar . '" style="height:22px;width:22px"> ' . $model->user->name;
                 return model_link($value, $model->user);
             },
         ],
-        'category' => [
+        'category'    => [
             'title'    => '分类',
             'sortable' => false,
             'output'   => function ($value, $model) {
@@ -36,18 +36,18 @@ return [
             },
         ],
         'reply_count' => [
-            'title'    => '评论',
+            'title' => '评论',
         ],
-        'operation' => [
-            'title'  => '管理',
+        'operation'   => [
+            'title'    => '管理',
             'sortable' => false,
         ],
     ],
     'edit_fields' => [
-        'title' => [
-            'title'    => '标题',
+        'title'       => [
+            'title' => '标题',
         ],
-        'user' => [
+        'user'        => [
             'title'              => '用户',
             'type'               => 'relationship',
             'name_field'         => 'name',
@@ -62,7 +62,7 @@ return [
             // 自动补全排序
             'options_sort_field' => 'id',
         ],
-        'category' => [
+        'category'    => [
             'title'              => '分类',
             'type'               => 'relationship',
             'name_field'         => 'name',
@@ -70,17 +70,17 @@ return [
             'options_sort_field' => 'id',
         ],
         'reply_count' => [
-            'title'    => '评论',
+            'title' => '评论',
         ],
-        'view_count' => [
-            'title'    => '查看',
+        'view_count'  => [
+            'title' => '查看',
         ],
     ],
-    'filters' => [
-        'id' => [
+    'filters'     => [
+        'id'       => [
             'title' => '内容 ID',
         ],
-        'user' => [
+        'user'     => [
             'title'              => '用户',
             'type'               => 'relationship',
             'name_field'         => 'name',
@@ -96,10 +96,10 @@ return [
             'options_sort_field' => 'id',
         ],
     ],
-    'rules'   => [
+    'rules'       => [
         'title' => 'required'
     ],
-    'messages' => [
+    'messages'    => [
         'title.required' => '请填写标题',
     ],
 ];

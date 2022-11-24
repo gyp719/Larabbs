@@ -3,32 +3,32 @@
 use App\Models\Reply;
 
 return [
-    'title'   => '回复',
-    'single'  => '回复',
-    'model'   => Reply::class,
+    'title'  => '回复',
+    'single' => '回复',
+    'model'  => Reply::class,
 
-    'columns' => [
+    'columns'     => [
 
-        'id' => [
+        'id'        => [
             'title' => 'ID',
         ],
-        'content' => [
+        'content'   => [
             'title'    => '内容',
             'sortable' => false,
             'output'   => function ($value, $model) {
                 return '<div style="max-width:220px">' . $value . '</div>';
             },
         ],
-        'user' => [
+        'user'      => [
             'title'    => '作者',
             'sortable' => false,
             'output'   => function ($value, $model) {
                 $avatar = $model->user->avatar;
-                $value = empty($avatar) ? 'N/A' : '<img src="'.$avatar.'" style="height:22px;width:22px"> ' . $model->user->name;
+                $value  = empty($avatar) ? 'N/A' : '<img src="' . $avatar . '" style="height:22px;width:22px"> ' . $model->user->name;
                 return model_link($value, $model->user);
             },
         ],
-        'topic' => [
+        'topic'     => [
             'title'    => '话题',
             'sortable' => false,
             'output'   => function ($value, $model) {
@@ -36,12 +36,12 @@ return [
             },
         ],
         'operation' => [
-            'title'  => '管理',
+            'title'    => '管理',
             'sortable' => false,
         ],
     ],
     'edit_fields' => [
-        'user' => [
+        'user'    => [
             'title'              => '用户',
             'type'               => 'relationship',
             'name_field'         => 'name',
@@ -49,7 +49,7 @@ return [
             'search_fields'      => array("CONCAT(id, ' ', name)"),
             'options_sort_field' => 'id',
         ],
-        'topic' => [
+        'topic'   => [
             'title'              => '话题',
             'type'               => 'relationship',
             'name_field'         => 'title',
@@ -58,12 +58,12 @@ return [
             'options_sort_field' => 'id',
         ],
         'content' => [
-            'title'    => '回复内容',
-            'type'     => 'textarea',
+            'title' => '回复内容',
+            'type'  => 'textarea',
         ],
     ],
-    'filters' => [
-        'user' => [
+    'filters'     => [
+        'user'    => [
             'title'              => '用户',
             'type'               => 'relationship',
             'name_field'         => 'name',
@@ -71,7 +71,7 @@ return [
             'search_fields'      => array("CONCAT(id, ' ', name)"),
             'options_sort_field' => 'id',
         ],
-        'topic' => [
+        'topic'   => [
             'title'              => '话题',
             'type'               => 'relationship',
             'name_field'         => 'title',
@@ -80,13 +80,13 @@ return [
             'options_sort_field' => 'id',
         ],
         'content' => [
-            'title'    => '回复内容',
+            'title' => '回复内容',
         ],
     ],
-    'rules'   => [
+    'rules'       => [
         'content' => 'required'
     ],
-    'messages' => [
+    'messages'    => [
         'content.required' => '请填写回复内容',
     ],
 ];
